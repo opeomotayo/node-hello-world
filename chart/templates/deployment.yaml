@@ -23,13 +23,5 @@ spec:
           env:
             - name: APP_VERSION
               value: "{{ .Values.env.APP_VERSION }}"
-          {% comment %} livenessProbe:
-            httpGet:
-              path: /healthz
-              port: {{ .Values.service.targetPort }}
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: {{ .Values.service.targetPort }} {% endcomment %}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
