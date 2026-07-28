@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: opeomotayo/node-hello-world
-  tag: 10
+  tag: <+artifacts.primary.tag>
   pullPolicy: IfNotPresent
 
 service:

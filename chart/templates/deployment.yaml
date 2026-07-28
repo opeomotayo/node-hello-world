@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: node-hello-world
-          image: {{ .Values.image.repository }}:<+artifact.tag>
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
