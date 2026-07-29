@@ -1,0 +1,64 @@
+trigger:
+  name: Push_to_Main
+  identifier: Push_To_Main
+  enabled: true
+  encryptedWebhookSecretIdentifier: ""
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  stagesToExecute: []
+  projectIdentifier: default_project
+  pipelineIdentifier: nodehelloworld
+  source:
+    type: Webhook
+    spec:
+      type: Github
+      spec:
+        type: Push
+        spec:
+          connectorRef: GitHub_Connector
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: <+trigger.payload.ref>
+              operator: Equals
+              value: refs/heads/main
+          headerConditions: []
+          repoName: node-hello-world
+          actions: []
+  inputYaml: |
+    pipeline:
+      identifier: nodehelloworld
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.branch>
+      stages:
+        - stage:
+            identifier: Deploy_PreProd
+            type: Deployment
+            spec:
+              service:
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: Node_Hello_World_Artifact
+                          sources: ""
+        - stage:
+            identifier: Deploy_Prod
+            type: Deployment
+            spec:
+              service:
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: Node_Hello_World_Artifact
+                          sources: ""
