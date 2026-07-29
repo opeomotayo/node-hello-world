@@ -2,6 +2,7 @@ trigger:
   name: Push_to_Main
   identifier: Push_To_Main
   enabled: true
+  pipelineBranchName: main
   encryptedWebhookSecretIdentifier: ""
   description: ""
   tags: {}
