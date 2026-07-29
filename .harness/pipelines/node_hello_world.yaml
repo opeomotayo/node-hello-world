@@ -1,5 +1,5 @@
 pipeline:
-  name: node-hello-world
+  name: Node_Hello_World
   identifier: nodehelloworld
   projectIdentifier: default_project
   orgIdentifier: default
@@ -12,7 +12,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: Build App
+        name: Build_App
         identifier: BuildApp
         description: ""
         type: CI
@@ -56,7 +56,7 @@ pipeline:
                     tags:
                       - <+pipeline.sequenceId>
     - stage:
-        name: Deploy PreProd
+        name: Deploy_PreProd
         identifier: Deploy_PreProd
         description: ""
         type: Deployment
@@ -103,7 +103,7 @@ pipeline:
               action:
                 type: StageRollback
     - stage:
-        name: Prod Approval
+        name: Prod_Approval
         identifier: Prod_Approval
         description: ""
         type: Approval
@@ -129,7 +129,7 @@ pipeline:
                     approverInputs: []
         tags: {}
     - stage:
-        name: Deploy Prod
+        name: Deploy_Prod
         identifier: Deploy_Prod
         description: ""
         type: Deployment
