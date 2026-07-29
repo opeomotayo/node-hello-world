@@ -28,7 +28,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: Kubernetes_Cluster_Connector
-              namespace: preprod
+              namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux

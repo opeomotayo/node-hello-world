@@ -1,0 +1,41 @@
+service:
+  name: node-hello-world-prod
+  identifier: Node_Hello_World_Prod
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: Node_Hello_World_Prod
+            type: HelmChart
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: GitHub_Connector
+                  gitFetchType: Branch
+                  folderPath: chart
+                  repoName: node-hello-world
+                  branch: main
+              subChartPath: ""
+              valuesPaths:
+                - chart/values-prod.yaml
+              optionalValuesYaml: false
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              helmVersion: V3
+              fetchHelmChartMetadata: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: Docker_Hub_Connector
+                imagePath: opeomotayo/node-hello-world
+                tag: <+pipeline.sequenceId>
+                digest: ""
+              identifier: Node_Hello_World_Artifact
+              type: DockerRegistry
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: default_project
