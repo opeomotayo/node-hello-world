@@ -36,7 +36,7 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Test App
+                  name: Test_App
                   identifier: Install_Dependencies_Run_Tests
                   spec:
                     connectorRef: Docker_Hub_Connector
