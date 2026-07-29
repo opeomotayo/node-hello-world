@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: Prod_Infrastructure
+  identifier: Prod_Infrastructure
+  orgIdentifier: default
+  projectIdentifier: default_project
+  environmentRef: Prod_Environment
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: Kubernetes_Cluster_Connector
+    namespace: prod
+    releaseName: <+service.name>
+  allowSimultaneousDeployments: true
