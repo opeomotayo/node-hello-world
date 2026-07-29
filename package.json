@@ -6,13 +6,17 @@
   "main": "app.js",
   "license": "Apache-2.0",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/IBM/node-hello-world-minimal.git"
+    "type": "git",
+    "url": "https://github.com/IBM/node-hello-world-minimal.git"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "node --test"
   },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
   }
 }
